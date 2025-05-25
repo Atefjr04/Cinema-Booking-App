@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React from 'react';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import theme from './styles/theme'; // Make sure your theme.js or theme.jsx file is correctly located here
+import Home from './pages/HomePage'; // Assuming you have a HomePage.jsx
+import LoginPage from './pages/LoginPage';   // <-- IMPORTANT: Changed import name to LoginPage, and file path to LoginPage.jsx
+import SignUpForm from './pages/SignUpForm'; // Assuming SignUpForm.jsx and SignUpForm component
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <CssBaseline /> {/* Applies a consistent baseline for CSS */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* Now the login route is /login, pointing to the LoginPage component */}
+          <Route path="/login" element={<LoginPage />} />
+          {/* The signup route remains /signup, pointing to the SignUpForm component */}
+          <Route path="/signup" element={<SignUpForm />} />
+          {/* Add more routes for other pages here as your app grows */}
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
