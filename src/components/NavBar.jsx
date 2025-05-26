@@ -41,7 +41,6 @@ function NavBar({ theatres = [] }) { // Default theatres to an empty array to pr
 
   const handleSelectLocation = (location) => {
     console.log(`Selected location: ${location.name}`);
-    // Implement your logic to save the selected location (e.g., in Context or Redux)
     handleLocationClose();
   };
 
@@ -59,7 +58,6 @@ function NavBar({ theatres = [] }) { // Default theatres to an empty array to pr
 
   const handleSelectLanguage = (lang) => {
     console.log(`Selected language: ${lang}`);
-    // Implement language change logic here
     handleLanguageClose();
   };
 
@@ -80,7 +78,7 @@ function NavBar({ theatres = [] }) { // Default theatres to an empty array to pr
       position="static"
       elevation={0}
       sx={{
-        bgcolor: theme.palette.background.paper, // Using theme's paper background
+        bgcolor: theme.palette.background.paper,
         borderBottom: `1px solid ${theme.palette.divider}`,
         py: 1,
       }}
@@ -98,7 +96,15 @@ function NavBar({ theatres = [] }) { // Default theatres to an empty array to pr
 
           {/* Desktop Nav Links */}
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-            <Button component={Link} to="/" color="inherit" sx={{ mx: 1, fontWeight: 600, color: theme.palette.text.primary }}>MOVIES</Button>
+            {/* Updated MOVIES Button to Navigate to /comingsoon */}
+            <Button
+              component={Link}
+              to="/comingsoon"  // Updated this path to "/comingsoon"
+              color="inherit"
+              sx={{ mx: 1, fontWeight: 600, color: theme.palette.text.primary }}
+            >
+              MOVIES
+            </Button>
             <Button component={Link} to="/cinemas" color="inherit" sx={{ mx: 1, fontWeight: 600, color: theme.palette.text.primary }}>CINEMAS</Button>
             <Button color="inherit" sx={{ mx: 1, fontWeight: 600, color: theme.palette.text.primary }}>OFFERS</Button>
             <Button color="inherit" sx={{ mx: 1, fontWeight: 600, color: theme.palette.text.primary }}>CONTACT</Button>
